@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "cHWJG9rd3MTHS8h+tvYt3gICSo2pPpJg1h8EfQyN+Up15Bnc+pjmja42Q3pycStLlqu4D7f0ndsNscF5lz99yw==",
+  "success": true,
+  "projectFilePath": "D:\\Codigos\\Entrevistas\\MagaLu\\Wishlist\\Wishlist.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\eduar\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.10.9\\microsoft.visualstudio.azure.containers.tools.targets.1.10.9.nupkg.sha512"
+  ],
+  "logs": []
+}
