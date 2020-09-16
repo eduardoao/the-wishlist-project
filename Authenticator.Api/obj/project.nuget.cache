@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "niCN6Q3hRvsPURiosJOWnb1n1cSQcj/8lJs9cpqiWiFuFkyQXKmZ1atzk4xA+vLukIEdvUXJS8ijKfQheb/NPQ==",
+  "success": true,
+  "projectFilePath": "D:\\Codigos\\Entrevistas\\MagaLu\\Wishlist\\Authenticator.Api\\Authenticator.Api.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\eduar\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.10.9\\microsoft.visualstudio.azure.containers.tools.targets.1.10.9.nupkg.sha512"
+  ],
+  "logs": []
+}
