@@ -8,6 +8,29 @@
           "build/Microsoft.VisualStudio.Azure.Containers.Tools.Targets.props": {},
           "build/Microsoft.VisualStudio.Azure.Containers.Tools.Targets.targets": {}
         }
+      },
+      "Wishlist.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/Wishlist.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Wishlist.Core.dll": {}
+        }
+      },
+      "Wishlist.Data/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Wishlist.Core": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Wishlist.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Wishlist.Data.dll": {}
+        }
       }
     }
   },
@@ -75,11 +98,23 @@
         "tools/zh-Hant/Microsoft.VisualStudio.Containers.Tools.Shared.resources.dll",
         "tools/zh-Hant/Microsoft.VisualStudio.Containers.Tools.Tasks.resources.dll"
       ]
+    },
+    "Wishlist.Core/1.0.0": {
+      "type": "project",
+      "path": "../Wishlist.Core/Wishlist.Core.csproj",
+      "msbuildProject": "../Wishlist.Core/Wishlist.Core.csproj"
+    },
+    "Wishlist.Data/1.0.0": {
+      "type": "project",
+      "path": "../Wishlist.Data/Wishlist.Data.csproj",
+      "msbuildProject": "../Wishlist.Data/Wishlist.Data.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.10.9"
+      "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.10.9",
+      "Wishlist.Core >= 1.0.0",
+      "Wishlist.Data >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -111,7 +146,14 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Codigos\\Entrevistas\\MagaLu\\Wishlist\\Wishlist.Core\\Wishlist.Core.csproj": {
+              "projectPath": "D:\\Codigos\\Entrevistas\\MagaLu\\Wishlist\\Wishlist.Core\\Wishlist.Core.csproj"
+            },
+            "D:\\Codigos\\Entrevistas\\MagaLu\\Wishlist\\Wishlist.Data\\Wishlist.Data.csproj": {
+              "projectPath": "D:\\Codigos\\Entrevistas\\MagaLu\\Wishlist\\Wishlist.Data\\Wishlist.Data.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

@@ -1,8 +1,0 @@
-D:\Codigos\Entrevistas\MagaLu\Wishlist\Authenticator.Api\bin\Debug\netcoreapp3.1\appsettings.Development.json
-D:\Codigos\Entrevistas\MagaLu\Wishlist\Authenticator.Api\bin\Debug\netcoreapp3.1\appsettings.json
-D:\Codigos\Entrevistas\MagaLu\Wishlist\Authenticator.Api\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
-D:\Codigos\Entrevistas\MagaLu\Wishlist\Authenticator.Api\obj\Debug\netcoreapp3.1\Authenticator.Api.AssemblyInfoInputs.cache
-D:\Codigos\Entrevistas\MagaLu\Wishlist\Authenticator.Api\obj\Debug\netcoreapp3.1\Authenticator.Api.AssemblyInfo.cs
-D:\Codigos\Entrevistas\MagaLu\Wishlist\Authenticator.Api\obj\Debug\netcoreapp3.1\Authenticator.Api.RazorTargetAssemblyInfo.cache
-D:\Codigos\Entrevistas\MagaLu\Wishlist\Authenticator.Api\obj\Debug\netcoreapp3.1\staticwebassets\Authenticator.Api.StaticWebAssets.Manifest.cache
-D:\Codigos\Entrevistas\MagaLu\Wishlist\Authenticator.Api\obj\Debug\netcoreapp3.1\staticwebassets\Authenticator.Api.StaticWebAssets.xml

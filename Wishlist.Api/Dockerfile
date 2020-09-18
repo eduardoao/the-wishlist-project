@@ -8,6 +8,8 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
 COPY ["Wishlist.Api.csproj", ""]
+COPY ["../Wishlist.Data/Wishlist.Data.csproj", "../Wishlist.Data/"]
+COPY ["../Wishlist.Core/Wishlist.Core.csproj", "../Wishlist.Core/"]
 RUN dotnet restore "./Wishlist.Api.csproj"
 COPY . .
 WORKDIR "/src/."
@@ -19,7 +21,4 @@ RUN dotnet publish "Wishlist.Api.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-#ENTRYPOINT ["dotnet", "Wishlist.Api.dll"]
-CMD ASPNETCORE_URLS=http://*:$PORT dotnet Wishlist.Api.dll
-
-#https://jakubwajs.wordpress.com/2020/01/31/deploying-asp-net-core-3-1-web-api-to-heroku-with-docker/
+ENTRYPOINT ["dotnet", "Wishlist.Api.dll"]

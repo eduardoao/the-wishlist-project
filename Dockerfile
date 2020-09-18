@@ -1,23 +1,31 @@
-#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
-
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base
-WORKDIR /app
-EXPOSE 80
-EXPOSE 443
-
+# NuGet restore
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["Wishlist.csproj", ""]
-RUN dotnet restore "./Wishlist.csproj"
+COPY *.sln .
+
+COPY Wishlist.Api/*.csproj  Wishlist.Api/
+COPY Wishlist.Data/*.csproj ./Wishlist.Data/
+COPY Wishlist.Core/*.csproj ./Wishlist.Core/
+COPY Wishlist.Test/*.csproj Wishlist.Test/
+
+RUN dotnet restore
 COPY . .
-WORKDIR "/src/."
-RUN dotnet build "Wishlist.csproj" -c Release -o /app/build
 
+# testing
+FROM build AS testing
+WORKDIR /src/Wishlist.Api
+RUN dotnet build
+WORKDIR /src/Wishlist.Test
+RUN dotnet test
+
+# publish
 FROM build AS publish
-RUN dotnet publish "Wishlist.csproj" -c Release -o /app/publish
+WORKDIR /src/Wishlist.Api
+RUN dotnet publish -c Release -o /src/publish
 
-FROM base AS final
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1 AS runtime
 WORKDIR /app
-COPY --from=publish /app/publish .
-#ENTRYPOINT ["dotnet", "Wishlist.dll"]
-CMD ASPNETCORE_URLS=http://*:$PORT dotnet Wishlist.dll
+COPY --from=publish /src/publish .
+
+# heroku uses the following
+CMD ASPNETCORE_URLS=http://*:$PORT dotnet Wishlist.Api.dll
