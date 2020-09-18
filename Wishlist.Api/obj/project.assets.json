@@ -11,7 +11,7 @@
       },
       "Wishlist.Core/1.0.0": {
         "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
+        "framework": ".NETCoreApp,Version=v3.1",
         "compile": {
           "bin/placeholder/Wishlist.Core.dll": {}
         },
@@ -21,10 +21,7 @@
       },
       "Wishlist.Data/1.0.0": {
         "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "dependencies": {
-          "Wishlist.Core": "1.0.0"
-        },
+        "framework": ".NETCoreApp,Version=v3.1",
         "compile": {
           "bin/placeholder/Wishlist.Data.dll": {}
         },
