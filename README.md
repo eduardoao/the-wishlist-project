@@ -1,3 +1,5 @@
+![Push Container to Heroku](https://github.com/eduardoao/the-wishlist-project/workflows/Push%20Container%20to%20Heroku/badge.svg)
+
 -   [Logo ou Banner](https://blog.rocketseat.com.br/como-fazer-um-bom-readme/#-logo-ou-banner)
 -   [Título e Descrição](https://blog.rocketseat.com.br/como-fazer-um-bom-readme/#-t-tulo-e-descri-o)
 -   [Badges](https://blog.rocketseat.com.br/como-fazer-um-bom-readme#-badges)
