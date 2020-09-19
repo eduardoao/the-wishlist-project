@@ -7,8 +7,8 @@ namespace Wishlist.Core.Models
 {
     public class Client : BaseModel<Guid>
     {
-        public Name Nome { get; set; }
-        public Email Email { get; set; }
+        public Name Nome { get; private set; }
+        public Email Email { get; private set; }
 
         public Client()
         {
@@ -20,6 +20,7 @@ namespace Wishlist.Core.Models
             Id = Guid.NewGuid();
             Nome = nome;
             Email = email;
+            DateCreate = DateTime.Now;
         }
 
         public static Client ClientBuilder(Name name,  Email email)
@@ -30,6 +31,7 @@ namespace Wishlist.Core.Models
 
             return client;
         }
+      
 
         public override bool IsValid()
         {

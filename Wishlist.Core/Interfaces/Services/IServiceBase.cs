@@ -9,7 +9,7 @@ namespace Wishlist.Core.Interfaces.Services
 
         void Add(T obj);
 
-        T GetById(int id);
+        T GetById(Guid id);
 
         IEnumerable<T> GetAll();
 

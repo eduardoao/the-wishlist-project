@@ -1,13 +1,16 @@
 ﻿using FluentValidation;
 using System;
+using System.Collections.Generic;
 using Wishlist.Core.Validators;
 
 namespace Wishlist.Core.Models
 {
     public class WishClient : BaseModel<Guid>
     {
-        public Client Client { get; set; }
-        public Product Product { get; set; }
+        public Client Client { get; private set; }
+        public Product Product { get; private set; }
+
+        public IEnumerable<Product> ListProducts { get; private set; }
 
         public WishClient()
         {
@@ -21,6 +24,10 @@ namespace Wishlist.Core.Models
             Product = product;
         }    
 
+        public IEnumerable<Product>GetProducts()
+        {
+            return ListProducts;
+        }
        
 
         public static WishClient WishClientBuilder(Client client, Product product)

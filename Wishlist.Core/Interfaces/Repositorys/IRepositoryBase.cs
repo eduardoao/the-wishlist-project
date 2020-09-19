@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Wishlist.Core.Interfaces.Repositorys
 {
@@ -8,7 +7,7 @@ namespace Wishlist.Core.Interfaces.Repositorys
     {
         void Add(T obj);
 
-        T GetById(int id);
+        T GetById(Guid id);
 
         IEnumerable<T> GetAll();
 

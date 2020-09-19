@@ -4,6 +4,7 @@ namespace Wishlist.Core.Interfaces.Services
 {
     public interface IClientService : IServiceBase<Client>
     {
+        
 
     }
 }

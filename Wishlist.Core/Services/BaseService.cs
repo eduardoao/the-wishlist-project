@@ -18,7 +18,7 @@ namespace Wishlist.Core.Services
         {
             _repository.Add(obj);
         }
-        public virtual T GetById(int id)
+        public virtual T GetById(Guid id)
         {
             return _repository.GetById(id);
         }

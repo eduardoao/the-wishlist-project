@@ -9,6 +9,8 @@ namespace Wishlist.Core.Models
     public abstract class BaseModel<T> : IValidation
     {
         public T Id { get; protected set; }
+
+        public DateTime DateCreate { get; protected set; }
         public abstract bool IsValid();
 
         public virtual IList<ValidationFailure> GetValidationResults()

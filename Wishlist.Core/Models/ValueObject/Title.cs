@@ -13,7 +13,7 @@ namespace Wishlist.Core.Models.ValueObject
             ValidationErrors = new List<ValidationFailure>();
         }
         public string Name { get; private set; }       
-        private IList<ValidationFailure> ValidationErrors { get; set; }
+        private IList<ValidationFailure> ValidationErrors { get;  set; }
      
 
         public IList<ValidationFailure> GetValidationResults()

@@ -7,5 +7,7 @@ namespace Wishlist.Core.Interfaces.Repositorys
 {
     public interface IRepositoryClient : IRepositoryBase<Client>
     {
+        Client GetByEmail(string email);
+
     }
 }

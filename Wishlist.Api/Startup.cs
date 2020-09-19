@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Wishlist.Core.Interfaces.Repositorys;
+using Wishlist.Data;
 
 namespace Wishlist.Api
 {
@@ -26,6 +28,9 @@ namespace Wishlist.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddTransient<IRepositoryClient, RepositoryClient>();
+            services.AddTransient<IRepositoryProduct, RepositoryProduct>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

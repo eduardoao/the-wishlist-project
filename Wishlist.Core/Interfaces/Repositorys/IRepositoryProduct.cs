@@ -7,5 +7,7 @@ namespace Wishlist.Core.Interfaces.Repositorys
 {
     public interface IRepositoryProduct : IRepositoryBase<Product>
     {
+        Product GetByProductTitle(string name);
+
     }
 }
