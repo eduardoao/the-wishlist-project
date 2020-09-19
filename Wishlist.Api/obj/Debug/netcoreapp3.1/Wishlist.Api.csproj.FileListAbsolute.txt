@@ -23,3 +23,4 @@ D:\Codigos\Entrevistas\MagaLu\Wishlist\Wishlist.Api\bin\Debug\netcoreapp3.1\Wish
 D:\Codigos\Entrevistas\MagaLu\Wishlist\Wishlist.Api\bin\Debug\netcoreapp3.1\Wishlist.Core.pdb
 D:\Codigos\Entrevistas\MagaLu\Wishlist\Wishlist.Api\bin\Debug\netcoreapp3.1\Wishlist.Data.pdb
 D:\Codigos\Entrevistas\MagaLu\Wishlist\Wishlist.Api\obj\Debug\netcoreapp3.1\Wishlist.Api.csproj.CopyComplete
+D:\Codigos\Entrevistas\MagaLu\Wishlist\Wishlist.Api\bin\Debug\netcoreapp3.1\FluentValidation.dll
