@@ -1,3 +1,6 @@
+
+![AppVeyor](https://img.shields.io/appveyor/build/eduardoao/the-wishlist-project)
+
 -   [Logo ou Banner](https://blog.rocketseat.com.br/como-fazer-um-bom-readme/#-logo-ou-banner)
 -   [Título e Descrição](https://blog.rocketseat.com.br/como-fazer-um-bom-readme/#-t-tulo-e-descri-o)
 -   [Badges](https://blog.rocketseat.com.br/como-fazer-um-bom-readme#-badges)
