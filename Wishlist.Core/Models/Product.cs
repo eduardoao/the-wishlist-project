@@ -23,6 +23,15 @@ namespace Wishlist.Core.Models
 
         }
 
+        public static Product ProductBuilder(Title title, Picture picture, double price, string brand)
+        {
+            var product = new Product( title,  picture,  price,  brand);
+
+            product.IsValid();
+
+            return product;
+        }
+
         public Title Title { get; private set; }
         public Picture Picture { get; private set; }
         public double Price { get; private set; }
@@ -42,11 +51,12 @@ namespace Wishlist.Core.Models
         public override bool IsValid()
         {
             var validator = new ProducttValidator();
-            var result = validator.Validate(this, rst =>
-            {
-                rst.ThrowOnFailures();
-            });
 
+            var result = validator.Validate(this);
+            foreach (var item in result.Errors)
+            {
+                this.Errors.Add(item);
+            }
             return result.IsValid;
         }
 

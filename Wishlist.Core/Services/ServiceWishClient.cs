@@ -10,10 +10,11 @@ namespace Wishlist.Core.Services
         public readonly IRepositoryWishClient _repositoryWishClient;
         public readonly IRepositoryProduct _repositoryProduct;
 
-        public ServiceWishClient(IRepositoryWishClient repositoryWishClient)
+        public ServiceWishClient(IRepositoryWishClient repositoryWishClient, IRepositoryProduct repositoryProduct)
             : base(repositoryWishClient)
         {
             _repositoryWishClient = repositoryWishClient;
+            _repositoryProduct = repositoryProduct;
         }
 
 
@@ -21,14 +22,13 @@ namespace Wishlist.Core.Services
         {
             var wishclientexist = _repositoryWishClient.GetByClientEmail(obj.Client.Email.ToString());
 
-            if (wishclientexist == null)
+            if (wishclientexist != null)
                 Errors.Add(new Error("003", "Cliente já possui uma lista de desejo na base de dados!"));
 
             var productexist = _repositoryProduct.GetByProductTitle(obj.Product.Title.ToString());
 
             if (productexist == null)
                 Errors.Add(new Error("003", "Produto não existe na base de dados!"));
-
 
             base.Add(obj);
         }

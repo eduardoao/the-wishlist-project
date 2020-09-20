@@ -42,11 +42,12 @@ namespace Wishlist.Core.Models
         public override bool IsValid()
         {
             var validator = new WishClientValidator();
-            var result = validator.Validate(this, rst =>
-            {
-                rst.ThrowOnFailures();
-            });
 
+            var result = validator.Validate(this);
+            foreach (var item in result.Errors)
+            {
+                this.Errors.Add(item);
+            }
             return result.IsValid;
         }
     }

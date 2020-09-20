@@ -6,7 +6,7 @@ namespace Wishlist.Core.Interfaces.Repositorys
     public interface IRepositoryWishClient : IRepositoryBase<WishClient>
     {
         WishClient GetByClientEmail(string id);
-
         void AddItem(WishClient obj);
+     
     }
 }
