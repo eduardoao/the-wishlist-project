@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using System;
+using System.Linq;
 using Wishlist.Core.Models.ValueObject;
 using Wishlist.Core.Validators;
 
@@ -7,7 +8,7 @@ namespace Wishlist.Core.Models
 {
     public class Client : BaseModel<Guid>
     {
-        public Name Nome { get; private set; }
+        public Name Name { get; private set; }
         public Email Email { get; private set; }
 
         public Client()
@@ -18,7 +19,7 @@ namespace Wishlist.Core.Models
         public Client(Name nome, Email email)
         {
             Id = Guid.NewGuid();
-            Nome = nome;
+            Name = nome;
             Email = email;
             DateCreate = DateTime.Now;
         }
@@ -36,12 +37,13 @@ namespace Wishlist.Core.Models
         public override bool IsValid()
         {
             var validator = new ClientValidator();
-            var result = validator.Validate(this, rst =>
+            
+            var result = validator.Validate(this);
+            foreach (var item in result.Errors)
             {
-                rst.ThrowOnFailures();
-            });
-
-            return result.IsValid;
+                this.Errors.Add(item);
+            }  
+            return result.IsValid;           
         }
     }
 }

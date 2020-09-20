@@ -45,7 +45,7 @@ namespace Wishlist.Api
                         Contact = new OpenApiContact
                         {
                             Name = "Wishlist.Api",
-                            Url = new Uri("https://the-wishlist-project.herokuapp.com/")
+                            Url = new Uri("https://the-wishlist-project.herokuapp.com/swagger/index.html")
                         }
                     });
 

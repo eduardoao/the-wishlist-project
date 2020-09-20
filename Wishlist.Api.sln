@@ -7,9 +7,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wishlist.Api", "Wishlist.Ap
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wishlist.Test", "Wishlist.Test\Wishlist.Test.csproj", "{D7DDB78A-E9F0-454B-8AC5-81B1923E5E76}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wishlist.Core", "Wishlist.Core\Wishlist.Core.csproj", "{C06C0345-F705-4FE5-B289-D9FC74C30698}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wishlist.Core", "Wishlist.Core\Wishlist.Core.csproj", "{C06C0345-F705-4FE5-B289-D9FC74C30698}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wishlist.Data", "Wishlist.Data\Wishlist.Data.csproj", "{6AEAA336-5B2C-4540-A658-AD5A1DAD7A57}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wishlist.Data", "Wishlist.Data\Wishlist.Data.csproj", "{6AEAA336-5B2C-4540-A658-AD5A1DAD7A57}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{C7E19579-ACE0-4CB7-AE67-8A313A866232}"
+	ProjectSection(SolutionItems) = preProject
+		Client.sql = Client.sql
+		product.sql = product.sql
+		Wishclient.sql = Wishclient.sql
+		wishclientitem.sql = wishclientitem.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

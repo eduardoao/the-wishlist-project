@@ -13,6 +13,7 @@ namespace Wishlist.Core.Services
         public BaseService(IRepositoryBase<T> Repository)
         {
             _repository = Repository;
+            Errors = new List<Error>();
         }
         public virtual void Add(T obj)
         {
