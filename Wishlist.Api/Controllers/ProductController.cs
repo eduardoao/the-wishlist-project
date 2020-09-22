@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.Json;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Wishlist.Api.DTO;
-using Wishlist.Core.Interfaces.Repositorys;
 using Wishlist.Core.Interfaces.Services;
 using Wishlist.Core.Models;
 using Wishlist.Core.Models.ValueObject;
-using Wishlist.Core.Services;
 
 namespace Wishlist.Api.Controllers
 {

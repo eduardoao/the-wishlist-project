@@ -27,8 +27,20 @@ namespace Wishlist.Core.Services
                 Errors.Add(new Error("001", "Cliente já existente na base de dados!"));
                 return;
             }
+            obj.SetIsEnable(true);
             base.Add(obj);
-        }         
-     
+        }
+
+        public override void Update(Client obj)
+        {
+            var clientexist = _repositoryClient.GetByEmail(obj.Email.ToString());
+            if (clientexist == null)
+            {
+                Errors.Add(new Error("001", "Cliente não existe na base de dados!"));
+                return;
+            }
+            base.Update(obj);
+        }
+
     }
 }

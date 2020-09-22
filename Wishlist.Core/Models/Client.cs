@@ -10,10 +10,16 @@ namespace Wishlist.Core.Models
     {
         public Name Name { get; private set; }
         public Email Email { get; private set; }
+        public bool IsEnable { get; private set; }
 
         public Client()
         {
 
+        }
+
+        public Client(Guid id)
+        {
+            Id = id;
         }
 
         public Client(Name nome, Email email)
@@ -32,7 +38,14 @@ namespace Wishlist.Core.Models
 
             return client;
         }
-      
+
+        public static Client ClientBuilder(Guid id)
+        {
+            var client = new Client(id);          
+
+            return client;
+        }
+
 
         public override bool IsValid()
         {
@@ -44,6 +57,11 @@ namespace Wishlist.Core.Models
                 this.Errors.Add(item);
             }  
             return result.IsValid;           
+        }
+
+        public void SetIsEnable(bool value)
+        {
+            this.IsEnable = value;
         }
     }
 }

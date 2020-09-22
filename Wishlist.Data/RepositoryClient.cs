@@ -6,6 +6,8 @@ using Wishlist.Core.Interfaces.Repositorys;
 using Wishlist.Core.Models;
 using Dapper;
 using System.Data;
+using System.Linq;
+using Wishlist.Core.Models.ValueObject;
 
 namespace Wishlist.Data
 {
@@ -33,11 +35,13 @@ namespace Wishlist.Data
         {
             using IDbConnection dbConnection = Connection;
             dbConnection.Open();
-            dbConnection.Execute("INSERT INTO client (id,name,email) VALUES (@id ,@Name ,@Email)", 
+            dbConnection.Execute("INSERT INTO client (id ,firstname ,lastname ,email) VALUES (@id ,@firstname, @lastname ,@Email)", 
                 new {
                     id = obj.Id 
-                    ,name = obj.Name.ToString()
+                    ,firstname = obj.Name.FirstName.ToString()                    
+                    ,lastname = obj.Name.LastName.ToString()                    
                     ,email = obj.Email.ToString() 
+                    
                 });
         }
 
@@ -51,7 +55,16 @@ namespace Wishlist.Data
 
             using IDbConnection dbConnection = Connection;
             dbConnection.Open();
-            return dbConnection.Query<Client>("SELECT * FROM client");
+            var clientresult = dbConnection.Query("SELECT * FROM client", commandType: CommandType.Text)
+               .Select(x =>
+               {
+                   var result = new Client(new Name(x.Firstname, x.Lastname), new Email(x.email));
+                   return result;
+               });
+
+            return clientresult;
+
+
 
         }
 
@@ -59,7 +72,15 @@ namespace Wishlist.Data
         {
             using IDbConnection dbConnection = Connection;
             dbConnection.Open();
-            return dbConnection.QueryFirstOrDefault<Client>("SELECT * FROM client WHERE Email=@email", new { Email = email });
+
+            var clientresult = dbConnection.Query("SELECT * FROM client WHERE Email = @email", new { Email = email }, commandType: CommandType.Text)
+                .Select(x =>
+                {
+                   var result = new Client(new Name(x.Firstname, x.Lastname), new Email(x.email));                  
+                   return result;
+                }).FirstOrDefault();
+
+            return clientresult;         
         }
 
         public Client GetById(Guid id)
@@ -82,7 +103,7 @@ namespace Wishlist.Data
         {
             using IDbConnection dbConnection = Connection;
             dbConnection.Open();
-            dbConnection.Query("UPDATE client SET name = @Name,  email= @Email WHERE id = @Id", obj);
+            dbConnection.Query("UPDATE client SET name = @Name WHERE id = @Id", new { Name = obj.Name.ToString(), id = obj.Id });
         }
     }
 }
