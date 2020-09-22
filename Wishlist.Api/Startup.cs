@@ -35,6 +35,7 @@ namespace Wishlist.Api
             services.AddTransient<IRepositoryWishClient, RepositoryWishClient>();
 
             services.AddTransient<IClientService, ServiceClient>();
+            services.AddTransient<IProductService, ServiceProduct>();
 
             // Configurando o serviço de documentação do Swagger
             services.AddSwaggerGen(c =>
@@ -92,10 +93,17 @@ namespace Wishlist.Api
             app.UseAuthorization();
 
             app.UseSwagger();
+
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "API de Lista de desejos");
             });
+
+            //app.UseSwaggerUI(c =>
+            //{
+            //    string swaggerJsonBasePath = string.IsNullOrWhiteSpace(c.RoutePrefix) ? "." : "..";
+            //    c.SwaggerEndpoint($"{swaggerJsonBasePath}/swagger/v1/swagger.json", "API de Lista de desejos");
+            //});
 
             app.UseEndpoints(endpoints =>
             {

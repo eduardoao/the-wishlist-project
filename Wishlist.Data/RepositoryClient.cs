@@ -33,13 +33,11 @@ namespace Wishlist.Data
         {
             using IDbConnection dbConnection = Connection;
             dbConnection.Open();
-            dbConnection.Execute("INSERT INTO client (id,name,email, dateCreate, dateUpdate) VALUES(@id ,@Name ,@Email, @dateCreate, @dateUpdate)", 
+            dbConnection.Execute("INSERT INTO client (id,name,email) VALUES (@id ,@Name ,@Email)", 
                 new {
                     id = obj.Id 
                     ,name = obj.Name.ToString()
-                    ,email = obj.Email.ToString()
-                    ,dateCreate = DateTime.Now
-                    ,dateUpdate = DateTime.Now
+                    ,email = obj.Email.ToString() 
                 });
         }
 

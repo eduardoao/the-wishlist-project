@@ -5,7 +5,7 @@ using Wishlist.Core.Models.ValueObject;
 
 namespace Wishlist.Core.Services
 {
-    public class ServiceProduct : BaseService<Product>
+    public class ServiceProduct : BaseService<Product>, IProductService
     {
         public readonly IRepositoryProduct _repositoryProduct;
 

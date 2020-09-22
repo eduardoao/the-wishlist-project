@@ -1,8 +1,3 @@
-D:\Codigos\Entrevistas\MagaLu\Wishlist\Wishlist.Api\obj\Debug\netcoreapp3.1\Wishlist.Api.AssemblyInfoInputs.cache
-D:\Codigos\Entrevistas\MagaLu\Wishlist\Wishlist.Api\obj\Debug\netcoreapp3.1\Wishlist.Api.AssemblyInfo.cs
-D:\Codigos\Entrevistas\MagaLu\Wishlist\Wishlist.Api\obj\Debug\netcoreapp3.1\Wishlist.Api.csproj.CoreCompileInputs.cache
-D:\Codigos\Entrevistas\MagaLu\Wishlist\Wishlist.Api\obj\Debug\netcoreapp3.1\Wishlist.Api.MvcApplicationPartsAssemblyInfo.cache
-D:\Codigos\Entrevistas\MagaLu\Wishlist\Wishlist.Api\obj\Debug\netcoreapp3.1\Wishlist.Api.csprojAssemblyReference.cache
 D:\Codigos\Entrevistas\MagaLu\Wishlist\Wishlist.Api\bin\Debug\netcoreapp3.1\appsettings.Development.json
 D:\Codigos\Entrevistas\MagaLu\Wishlist\Wishlist.Api\bin\Debug\netcoreapp3.1\appsettings.json
 D:\Codigos\Entrevistas\MagaLu\Wishlist\Wishlist.Api\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
@@ -46,6 +41,12 @@ D:\Codigos\Entrevistas\MagaLu\Wishlist\Wishlist.Api\bin\Debug\netcoreapp3.1\Wish
 D:\Codigos\Entrevistas\MagaLu\Wishlist\Wishlist.Api\bin\Debug\netcoreapp3.1\Wishlist.Data.dll
 D:\Codigos\Entrevistas\MagaLu\Wishlist\Wishlist.Api\bin\Debug\netcoreapp3.1\Wishlist.Core.pdb
 D:\Codigos\Entrevistas\MagaLu\Wishlist\Wishlist.Api\bin\Debug\netcoreapp3.1\Wishlist.Data.pdb
+D:\Codigos\Entrevistas\MagaLu\Wishlist\Wishlist.Api\obj\Debug\netcoreapp3.1\Wishlist.Api.csprojAssemblyReference.cache
+D:\Codigos\Entrevistas\MagaLu\Wishlist\Wishlist.Api\obj\Debug\netcoreapp3.1\Wishlist.Api.AssemblyInfoInputs.cache
+D:\Codigos\Entrevistas\MagaLu\Wishlist\Wishlist.Api\obj\Debug\netcoreapp3.1\Wishlist.Api.AssemblyInfo.cs
+D:\Codigos\Entrevistas\MagaLu\Wishlist\Wishlist.Api\obj\Debug\netcoreapp3.1\Wishlist.Api.csproj.CoreCompileInputs.cache
+D:\Codigos\Entrevistas\MagaLu\Wishlist\Wishlist.Api\obj\Debug\netcoreapp3.1\Wishlist.Api.MvcApplicationPartsAssemblyInfo.cs
+D:\Codigos\Entrevistas\MagaLu\Wishlist\Wishlist.Api\obj\Debug\netcoreapp3.1\Wishlist.Api.MvcApplicationPartsAssemblyInfo.cache
 D:\Codigos\Entrevistas\MagaLu\Wishlist\Wishlist.Api\obj\Debug\netcoreapp3.1\Wishlist.Api.RazorTargetAssemblyInfo.cache
 D:\Codigos\Entrevistas\MagaLu\Wishlist\Wishlist.Api\obj\Debug\netcoreapp3.1\Wishlist.Api.csproj.CopyComplete
 D:\Codigos\Entrevistas\MagaLu\Wishlist\Wishlist.Api\obj\Debug\netcoreapp3.1\staticwebassets\Wishlist.Api.StaticWebAssets.Manifest.cache
@@ -53,4 +54,3 @@ D:\Codigos\Entrevistas\MagaLu\Wishlist\Wishlist.Api\obj\Debug\netcoreapp3.1\stat
 D:\Codigos\Entrevistas\MagaLu\Wishlist\Wishlist.Api\obj\Debug\netcoreapp3.1\Wishlist.Api.dll
 D:\Codigos\Entrevistas\MagaLu\Wishlist\Wishlist.Api\obj\Debug\netcoreapp3.1\Wishlist.Api.pdb
 D:\Codigos\Entrevistas\MagaLu\Wishlist\Wishlist.Api\obj\Debug\netcoreapp3.1\Wishlist.Api.genruntimeconfig.cache
-D:\Codigos\Entrevistas\MagaLu\Wishlist\Wishlist.Api\obj\Debug\netcoreapp3.1\Wishlist.Api.MvcApplicationPartsAssemblyInfo.cs

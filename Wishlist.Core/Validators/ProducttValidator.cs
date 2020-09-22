@@ -16,9 +16,8 @@ namespace Wishlist.Core.Validators
                 .WithMessage("Titúlo do produto não pode ser branco!");
 
             RuleFor(x => x.Price)
-             .NotNull()
-             .NotEmpty()
-             .LessThan(1).WithMessage("O preço produto não pode ser inferior a R$ 1,00");          
+             .NotNull()             
+             .WithMessage("O preço produto não pode ser vazio!");          
 
 
         }

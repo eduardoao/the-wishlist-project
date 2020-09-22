@@ -37,7 +37,13 @@ namespace Wishlist.Data
         {
             using IDbConnection dbConnection = Connection;
             dbConnection.Open();
-            dbConnection.Execute("INSERT INTO Product (id, Title, Picture, Price, Datecreate) VALUES(@id, @Title, @Picture, @Price, @Datecreate)", obj);           
+            dbConnection.Execute("INSERT INTO Product (id, Title, Picture, Price) VALUES(@id, @Title, @Picture, @Price)", 
+                new {
+                    id = obj.Id,
+                    title = obj.Title.Name.ToString(),
+                    picture = obj.Picture.Url.ToString(),
+                    price = obj.Price                    
+                });           
         }
 
         public void Dispose()
@@ -61,11 +67,11 @@ namespace Wishlist.Data
             return dbConnection.QueryFirst<Product>("SELECT * FROM product WHERE ID=@id", new { Id = id });
         }
 
-        public Product GetByProductTitle(string name)
+        public Product GetByProductTitle(string title)
         {
             using IDbConnection dbConnection = Connection;
             dbConnection.Open();
-            return dbConnection.QueryFirst<Product>("SELECT * FROM product WHERE Name=@name", new { Name = name });
+            return dbConnection.QueryFirstOrDefault<Product>("SELECT * FROM product WHERE Title=@title", new { Title = title });
         }
 
         public void Remove(Product obj)
