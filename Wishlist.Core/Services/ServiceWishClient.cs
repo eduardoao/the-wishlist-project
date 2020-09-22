@@ -16,23 +16,32 @@ namespace Wishlist.Core.Services
             _repositoryWishClient = repositoryWishClient;
             _repositoryProduct = repositoryProduct;
         }
-
-
         public override void Add(WishClient obj)
         {
             var wishclientexist = _repositoryWishClient.GetByClientEmail(obj.Client.Email.ToString());
 
             if (wishclientexist != null)
-                Errors.Add(new Error("003", "Cliente já possui uma lista de desejo na base de dados!"));
+            { 
+                var productexist = _repositoryProduct.GetByProductTitle(obj.Product.Title.ToString());
 
-            var productexist = _repositoryProduct.GetByProductTitle(obj.Product.Title.ToString());
+                if (productexist == null)
+                {
+                    Errors.Add(new Error("003", "Produto não existe na base de dados!"));
+                    return;
+                }
 
-            if (productexist == null)
-                Errors.Add(new Error("003", "Produto não existe na base de dados!"));
+                var productexistinwichlist = _repositoryWishClient.ProductExistInWish(wishclientexist.Id, obj.Product.Title.ToString());
+
+                if (productexistinwichlist)
+                {
+                    Errors.Add(new Error("003", "O produto selecionado já consta na lista de desejos!"));
+                    return;
+                }
+                _repositoryWishClient.AddItem(obj);
+            }          
 
             base.Add(obj);
         }
-
 
     }
 }

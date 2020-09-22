@@ -1,18 +1,15 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Wishlist.Core.Interfaces.Repositorys;
+using Wishlist.Core.Interfaces.Services;
+using Wishlist.Core.Services;
 using Wishlist.Data;
 
 namespace Wishlist.Api
@@ -35,6 +32,9 @@ namespace Wishlist.Api
 
             services.AddTransient<IRepositoryClient, RepositoryClient>();
             services.AddTransient<IRepositoryProduct, RepositoryProduct>();
+            services.AddTransient<IRepositoryWishClient, RepositoryWishClient>();
+
+            services.AddTransient<IClientService, ServiceClient>();
 
             // Configurando o serviço de documentação do Swagger
             services.AddSwaggerGen(c =>

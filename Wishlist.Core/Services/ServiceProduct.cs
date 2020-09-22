@@ -18,7 +18,7 @@ namespace Wishlist.Core.Services
         public override void Add(Product obj)
         {
             var productexist = _repositoryProduct.GetByProductTitle(obj.Title.ToString());
-            if (productexist == null)
+            if (productexist != null)
                 Errors.Add(new Error("002", "Produto já existente na base de dados!"));
             base.Add(obj);
         }

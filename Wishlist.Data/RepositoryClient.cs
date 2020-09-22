@@ -33,7 +33,14 @@ namespace Wishlist.Data
         {
             using IDbConnection dbConnection = Connection;
             dbConnection.Open();
-            dbConnection.Execute("INSERT INTO client (name,email) VALUES(@Name,@Email)", obj);
+            dbConnection.Execute("INSERT INTO client (id,name,email, dateCreate, dateUpdate) VALUES(@id ,@Name ,@Email, @dateCreate, @dateUpdate)", 
+                new {
+                    id = obj.Id 
+                    ,name = obj.Name.ToString()
+                    ,email = obj.Email.ToString()
+                    ,dateCreate = DateTime.Now
+                    ,dateUpdate = DateTime.Now
+                });
         }
 
         public void Dispose()
@@ -44,30 +51,24 @@ namespace Wishlist.Data
         public IEnumerable<Client> GetAll()
         {
 
-            using (IDbConnection dbConnection = Connection)
-            {
-                dbConnection.Open();
-                return dbConnection.Query<Client>("SELECT * FROM client");
-            }
-          
+            using IDbConnection dbConnection = Connection;
+            dbConnection.Open();
+            return dbConnection.Query<Client>("SELECT * FROM client");
+
         }
 
         public Client GetByEmail(string email)
         {
-            using (IDbConnection dbConnection = Connection)
-            {
-                dbConnection.Open();
-                return dbConnection.QueryFirst<Client>("SELECT * FROM client WHERE Email=@email", new { Email = email });
-            }
+            using IDbConnection dbConnection = Connection;
+            dbConnection.Open();
+            return dbConnection.QueryFirstOrDefault<Client>("SELECT * FROM client WHERE Email=@email", new { Email = email });
         }
 
         public Client GetById(Guid id)
         {
-            using (IDbConnection dbConnection = Connection)
-            {
-                dbConnection.Open();
-                return dbConnection.QueryFirst<Client>("SELECT * FROM client WHERE ID=@id", new { Id = id});
-            }
+            using IDbConnection dbConnection = Connection;
+            dbConnection.Open();
+            return dbConnection.QueryFirst<Client>("SELECT * FROM client WHERE ID=@id", new { Id = id });
         }       
 
         public void Remove(Client obj)
@@ -81,11 +82,9 @@ namespace Wishlist.Data
 
         public void Update(Client obj)
         {
-            using (IDbConnection dbConnection = Connection)
-            {
-                dbConnection.Open();
-                dbConnection.Query("UPDATE client SET name = @Name,  email= @Email WHERE id = @Id", obj);
-            }
+            using IDbConnection dbConnection = Connection;
+            dbConnection.Open();
+            dbConnection.Query("UPDATE client SET name = @Name,  email= @Email WHERE id = @Id", obj);
         }
     }
 }

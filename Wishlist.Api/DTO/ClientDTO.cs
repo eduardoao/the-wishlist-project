@@ -7,6 +7,7 @@ namespace Wishlist.Api.DTO
     public class ClientDTO
     {
         public string Nome { get; set; }
+        public string SobreNome { get; set; }
         public string Email { get; set; }
     }
 }

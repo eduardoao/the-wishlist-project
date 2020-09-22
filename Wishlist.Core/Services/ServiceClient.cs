@@ -6,18 +6,21 @@ using Wishlist.Core.Models.ValueObject;
 
 namespace Wishlist.Core.Services
 {
-    public class ServiceClient : BaseService<Client>
+    public class ServiceClient : BaseService<Client>, IClientService
     {
         public readonly IRepositoryClient _repositoryClient;
+      
 
         public ServiceClient(IRepositoryClient RepositoryCliente)
             : base(RepositoryCliente)
         {
             _repositoryClient = RepositoryCliente;
+           
         }
 
         public override void Add(Client obj)
-        {
+        {            
+
             var clientexist = _repositoryClient.GetByEmail(obj.Email.ToString());
             if (clientexist != null)
             {

@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using Wishlist.Core.Interfaces.Repositorys;
+using Wishlist.Core.Models;
 using Wishlist.Core.Models.ValueObject;
 
 namespace Wishlist.Core.Services
@@ -9,6 +11,15 @@ namespace Wishlist.Core.Services
     public abstract class BaseService<T> where T: class
     {
         private readonly IRepositoryBase<T> _repository;
+
+        protected BaseModel<T> NotificationModel;
+
+        public bool HasNotifications => NotificationModel != null && NotificationModel.Errors.Count > 0;
+
+        public IEnumerable ErrorsNotification()
+        {
+            return NotificationModel?.Errors;
+        }
 
         public BaseService(IRepositoryBase<T> Repository)
         {
@@ -26,7 +37,8 @@ namespace Wishlist.Core.Services
         public virtual IEnumerable<T> GetAll()
         {
             return _repository.GetAll();
-        }
+        }     
+
         public virtual void Update(T obj)
         {
             _repository.Update(obj);
