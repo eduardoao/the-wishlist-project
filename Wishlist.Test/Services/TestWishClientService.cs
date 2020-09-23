@@ -39,7 +39,9 @@ namespace Wishlist.Test.Services
 
             var wishlist = WishClient.WishClientBuilder(client, product);
 
+            repositoryClient.Setup(x => x.GetById(It.IsAny<Guid>())).Returns(client);
             repositoryWhisClient.Setup(x => x.GetByClientEmail(client.Email.ToString())).Returns((WishClient)null);
+            repositoryWhisClient.Setup(x => x.GetById(It.IsAny<Guid>())).Returns(wishlist);
             repositoryProduct.Setup(x => x.GetByProductTitle(product.Title.ToString())).Returns(product);
 
             serviceWishClient.Add(wishlist);
@@ -74,6 +76,7 @@ namespace Wishlist.Test.Services
         {
             GetWishClient(out Client client, out Product product, out WishClient wishlist);
 
+            repositoryClient.Setup(x => x.GetById(It.IsAny<Guid>())).Returns(client);
             repositoryWhisClient.Setup(x => x.GetByClientEmail(client.Email.ToString())).Returns((WishClient)wishlist);
             repositoryProduct.Setup(x => x.GetByProductTitle(product.Title.ToString())).Returns(product);
             repositoryWhisClient.Setup(x => x.ProductExistInWish(It.IsAny<Guid>(), It.IsAny<string>())).Returns(true);            
