@@ -35,7 +35,7 @@ namespace Wishlist.Core.Services
                 return;
             }
 
-            var wishclientexist = _repositoryWishClient.GetByClientEmail(obj.Client.Email.ToString());
+            var wishclientexist = _repositoryWishClient.GetByClientEmail(clientexist.Email.ToString());
 
             if (wishclientexist != null)
             {                 
@@ -53,17 +53,13 @@ namespace Wishlist.Core.Services
             else
             {
                 var wishlist = WishClient.WishClientBuilder(clientexist, productexist);
-                _repositoryWishClient.Add(wishlist);
-                //todo  Retornar a lista para adicionar no item
+                _repositoryWishClient.Add(wishlist);                
+                obj.SetId(wishlist.Id);
+                obj.SetProduct(productexist);
                 _repositoryWishClient.AddItem(obj);
+              
 
-            }
-
-            Errors.Add(new Error("003", "Cliente nao existe na base da dados!"));
-            return;
-
-            //base.Add(obj);
+            }          
         }
-
     }
 }

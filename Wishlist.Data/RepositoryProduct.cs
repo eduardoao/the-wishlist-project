@@ -56,8 +56,16 @@ namespace Wishlist.Data
         {
 
             using IDbConnection dbConnection = Connection;
-            dbConnection.Open();
-            return dbConnection.Query<Product>("SELECT * FROM Product");
+            dbConnection.Open();           
+
+            var productresult = dbConnection.Query("SELECT * FROM Product", commandType: CommandType.Text)
+             .Select(x =>
+             {
+                 var result = new Product(new Title(x.title), new Picture(x.picture), (double)x.price, x.brand);
+                 return result;
+             });
+
+            return productresult;
 
         }    
 
@@ -75,7 +83,8 @@ namespace Wishlist.Data
             var productresult = dbConnection.Query("SELECT * FROM product WHERE Title=@title", new { Title = title }, commandType: CommandType.Text)
                .Select(x =>
                {
-                   var result = new Product(new Title(x.title), new Picture(x.picture), (double)x.price, x.brand);
+                   var result = new Product(x.id, new Title(x.title), new Picture(x.picture), (double)x.price, x.brand);
+
                    return result;
                }).FirstOrDefault();
 

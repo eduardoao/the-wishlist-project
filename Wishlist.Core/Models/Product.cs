@@ -18,6 +18,18 @@ namespace Wishlist.Core.Models
 
         }
 
+
+        public Product(Guid id, Title title, Picture picture, double price, string brand)
+        {
+            Id = id;
+            Title = title;
+            Picture = picture;
+            Price = price;
+            DateCreate = DateTime.Now;
+            Brand = brand;
+
+        }
+
         public Product()
         {
 
@@ -49,6 +61,11 @@ namespace Wishlist.Core.Models
         public void SetReviewScore(int score)
         {
             ReviewScore = score;
+        }
+
+        public void SetId(Guid id)
+        {
+            Id = id;
         }
 
 

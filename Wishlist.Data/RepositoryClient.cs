@@ -35,14 +35,13 @@ namespace Wishlist.Data
         {
             using IDbConnection dbConnection = Connection;
             dbConnection.Open();
-            dbConnection.Execute("INSERT INTO client (id ,firstname ,lastname ,email,) VALUES (@id ,@firstname, @lastname ,@Email)", 
+            dbConnection.Execute("INSERT INTO client (id ,firstname ,lastname ,email) VALUES (@id ,@firstname, @lastname ,@email)", 
                 new {
                     id = obj.Id 
                     ,firstname = obj.Name.FirstName.ToString()                    
                     ,lastname = obj.Name.LastName.ToString()                    
-                    ,email = obj.Email.ToString() 
-                    
-                });
+                    ,email = obj.Email.ToString()
+                }, commandType: CommandType.Text);
         }
 
         public void Dispose()

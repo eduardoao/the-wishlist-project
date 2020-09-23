@@ -29,6 +29,15 @@ namespace Wishlist.Core.Models
             return ListProducts;
         }
        
+        public void SetId(Guid id)
+        {
+            this.Id = id;
+        }
+
+        public void SetProduct(Product product)
+        {
+            this.Product = product;
+        }
 
         public static WishClient WishClientBuilder(Client client, Product product)
         {
