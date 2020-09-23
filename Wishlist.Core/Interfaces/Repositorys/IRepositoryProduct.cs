@@ -9,5 +9,7 @@ namespace Wishlist.Core.Interfaces.Repositorys
     {
         Product GetByProductTitle(string name);
 
+        IList<Product> GetProductsPaged(int limit, int offset);
+
     }
 }

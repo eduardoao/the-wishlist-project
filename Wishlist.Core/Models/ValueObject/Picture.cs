@@ -20,7 +20,9 @@ namespace Wishlist.Core.Models.ValueObject
         {
             get
             {
-                return Url.Substring(Url.LastIndexOf('.'));
+                if (Url.Contains('.'))                
+                    return Url.Substring(Url.LastIndexOf('.'));
+                return Url;                
             }
         }
 

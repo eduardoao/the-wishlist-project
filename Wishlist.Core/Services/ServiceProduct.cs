@@ -1,4 +1,5 @@
-﻿using Wishlist.Core.Interfaces.Repositorys;
+﻿using System.Collections.Generic;
+using Wishlist.Core.Interfaces.Repositorys;
 using Wishlist.Core.Interfaces.Services;
 using Wishlist.Core.Models;
 using Wishlist.Core.Models.ValueObject;
@@ -22,6 +23,17 @@ namespace Wishlist.Core.Services
                 Errors.Add(new Error("002", "Produto já existente na base de dados!"));
             base.Add(obj);
         }
+
+        public IList<Product> GetProductsPaged(int limit)
+        {
+            var target = 10;
+            var listproductexist = _repositoryProduct.GetProductsPaged(limit, target);
+            if (listproductexist != null)
+                Errors.Add(new Error("002", "Produto já existente na base de dados!"));
+
+            return listproductexist;
+        }
+
 
 
 

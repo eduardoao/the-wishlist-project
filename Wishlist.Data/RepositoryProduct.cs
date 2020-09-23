@@ -9,6 +9,7 @@ using Dapper.Contrib.Extensions;
 using Dapper;
 using System.Data;
 using Wishlist.Core.Models.ValueObject;
+using System.Linq;
 
 namespace Wishlist.Data
 {
@@ -30,19 +31,19 @@ namespace Wishlist.Data
             {
                 return new NpgsqlConnection(connectionString);
             }
-        }
-               
+        }               
 
         public void Add(Product obj)
         {
             using IDbConnection dbConnection = Connection;
             dbConnection.Open();
-            dbConnection.Execute("INSERT INTO Product (id, Title, Picture, Price) VALUES(@id, @Title, @Picture, @Price)", 
+            dbConnection.Execute("INSERT INTO Product (id, Title, Picture, Price, Brand) VALUES(@id, @Title, @Picture, @Price, @Brand)", 
                 new {
                     id = obj.Id,
                     title = obj.Title.Name.ToString(),
                     picture = obj.Picture.Url.ToString(),
-                    price = obj.Price                    
+                    price = obj.Price ,
+                    brand = obj.Brand
                 });           
         }
 
@@ -71,8 +72,16 @@ namespace Wishlist.Data
         {
             using IDbConnection dbConnection = Connection;
             dbConnection.Open();
-            return dbConnection.QueryFirstOrDefault<Product>("SELECT * FROM product WHERE Title=@title", new { Title = title });
+            var productresult = dbConnection.Query("SELECT * FROM product WHERE Title=@title", new { Title = title }, commandType: CommandType.Text)
+               .Select(x =>
+               {
+                   var result = new Product(new Title(x.title), new Picture(x.picture), (double)x.price, x.brand);
+                   return result;
+               }).FirstOrDefault();
+
+            return productresult;
         }
+           
 
         public void Remove(Product obj)
         {
@@ -90,6 +99,19 @@ namespace Wishlist.Data
                     new { Title = obj.Title.ToString(), Picture = obj.Picture.ToString(), Price = obj.Price, Id = obj.Id });
             }
         }
-        
+
+        IList<Product> IRepositoryProduct.GetProductsPaged(int pageNumber, int pageSize)
+        {
+            using IDbConnection dbConnection = Connection;
+            dbConnection.Open();
+            var productresult = dbConnection.Query("SELECT * FROM  product LIMIT @pageSize OFFSET(@pageNumber)", new { @pageSize, @pageNumber }, commandType: CommandType.Text)
+               .Select(x =>
+               {
+                   var result = new Product(new Title(x.title), new Picture(x.picture), (double)x.price, x.brand);
+                   return result;
+               });
+
+            return productresult.ToList();
+        }
     }
 }

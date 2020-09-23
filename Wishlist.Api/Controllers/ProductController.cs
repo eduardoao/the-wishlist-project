@@ -41,5 +41,20 @@ namespace Wishlist.Api.Controllers
             return Ok();
         }
 
+        [HttpGet]
+        public IActionResult GetProduct()
+        {
+            var listproduct = _productService.GetAll();
+            return (ActionResult)(listproduct.Count() != 0 ? Ok(listproduct) : (IActionResult)BadRequest(listproduct));
+        }
+
+        [HttpGet]
+        [Route("/page={page}")]
+        public IActionResult GetByPagination(int page)
+        {
+            var listproduct = _productService.GetProductsPaged(page);
+            return (ActionResult)(listproduct.Count() != 0 ? Ok(listproduct) : (IActionResult)BadRequest(listproduct));
+        }
+
     }
 }

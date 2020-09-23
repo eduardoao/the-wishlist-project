@@ -35,7 +35,7 @@ namespace Wishlist.Data
         {
             using IDbConnection dbConnection = Connection;
             dbConnection.Open();
-            dbConnection.Execute("INSERT INTO client (id ,firstname ,lastname ,email) VALUES (@id ,@firstname, @lastname ,@Email)", 
+            dbConnection.Execute("INSERT INTO client (id ,firstname ,lastname ,email,) VALUES (@id ,@firstname, @lastname ,@Email)", 
                 new {
                     id = obj.Id 
                     ,firstname = obj.Name.FirstName.ToString()                    
