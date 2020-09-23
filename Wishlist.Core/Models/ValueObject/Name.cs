@@ -1,4 +1,5 @@
 ﻿using FluentValidation.Results;
+using System;
 using System.Collections.Generic;
 using Wishlist.Core.Interfaces.Validators;
 using Wishlist.Core.Validators;
@@ -15,6 +16,9 @@ namespace Wishlist.Core.Models.ValueObject
         }
         public string FirstName { get; private set; }
         public string LastName { get; private set; }
+
+       
+               
         private IList<ValidationFailure> ValidationErrors { get; set; }
      
 

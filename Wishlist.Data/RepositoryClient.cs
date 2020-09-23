@@ -87,7 +87,15 @@ namespace Wishlist.Data
         {
             using IDbConnection dbConnection = Connection;
             dbConnection.Open();
-            return dbConnection.QueryFirst<Client>("SELECT * FROM client WHERE ID=@id", new { Id = id });
+          
+            var clientresult = dbConnection.Query("SELECT * FROM client WHERE ID=@id", new { Id = id }, commandType: CommandType.Text)
+                .Select(x =>
+                {
+                    var result = new Client(new Name(x.Firstname, x.Lastname), new Email(x.email));
+                    return result;
+                }).FirstOrDefault();
+
+            return clientresult;
         }       
 
         public void Remove(Client obj)

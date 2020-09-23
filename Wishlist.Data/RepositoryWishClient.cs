@@ -33,16 +33,16 @@ namespace Wishlist.Data
         {
             using IDbConnection dbConnection = Connection;
             dbConnection.Open();
-            dbConnection.Execute("INSERT INTO WISHCLIENT (id, DateCreate, idClient) VALUES(@id, @DateCreate, @idClient)"
-                , new { id = obj.Id.ToString(), obj.DateCreate, idClient = obj.Client.Id.ToString() });
+            dbConnection.Execute("INSERT INTO WISHCLIENT (id, id_client) VALUES(@id, @idClient)"
+                , new { id = obj.Id, idClient = obj.Client.Id });
         }
 
         public void AddItem(WishClient obj)
         {
             using IDbConnection dbConnection = Connection;
             dbConnection.Open();
-            dbConnection.Execute("INSERT INTO WISHCLIENTITEM (wishclient_id, product_id, datecreate, dateupdate) VALUES(@wishclient_id, @product_id, @datecreate, @dateupdate)"
-                , new { wishclient_id = obj.Id.ToString(), product_id= obj.Product.Id, datecreate= obj.DateCreate, dateupdate=obj.DateUpdate });
+            dbConnection.Execute("INSERT INTO WISHCLIENTITEM (wishclient_id, product_id) VALUES(@wishclient_id, @product_id)"
+                , new { wishclient_id = obj.Id, product_id= obj.Product.Id });
         }
 
         public void Dispose()
@@ -61,7 +61,7 @@ namespace Wishlist.Data
         {
             using IDbConnection dbConnection = Connection;
             dbConnection.Open();
-            return dbConnection.QueryFirst<WishClient>("SELECT * FROM WISHCLIENT INNER JOIN WISHCLIENTITEM ON WISHCLIENT.ID = WISHCLIENTITEM.wishclient_id INNER JOIN CLIENT ON WISHCLIENT.ID_CLIENT = CLIENTE.ID  WHERE CLIENTE.EMAIL=@email", new { email = email });
+            return dbConnection.QueryFirstOrDefault<WishClient>("SELECT * FROM WISHCLIENT INNER JOIN WISHCLIENTITEM ON WISHCLIENT.ID = WISHCLIENTITEM.wishclient_id INNER JOIN CLIENT ON WISHCLIENT.ID_CLIENT = CLIENT.ID  WHERE CLIENT.EMAIL=@email", new { email = email });
        
         }
 
@@ -69,7 +69,7 @@ namespace Wishlist.Data
         {
             using IDbConnection dbConnection = Connection;
             dbConnection.Open();
-            return dbConnection.QueryFirst<WishClient>("SELECT * FROM WISHCLIENT INNER JOIN WISHCLIENTITEM ON WISHCLIENT.ID = WISHCLIENTITEM.wishclient_id WHERE WISHCLIENT.ID =@id", new { id = id });
+            return dbConnection.QueryFirstOrDefault<WishClient>("SELECT * FROM WISHCLIENT INNER JOIN WISHCLIENTITEM ON WISHCLIENT.ID = WISHCLIENTITEM.wishclient_id WHERE WISHCLIENT.ID =@id", new { id = id });
 
         }
 

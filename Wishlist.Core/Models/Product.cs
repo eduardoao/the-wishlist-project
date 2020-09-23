@@ -23,6 +23,11 @@ namespace Wishlist.Core.Models
 
         }
 
+        public Product(Title title)
+        {
+            Title = title;
+        }
+
         public static Product ProductBuilder(Title title, Picture picture, double price, string brand)
         {
             var product = new Product( title,  picture,  price,  brand);

@@ -32,17 +32,18 @@ namespace Wishlist.Api.Controllers
         [HttpPost]
         public IActionResult CreateWishList([FromBody] WishClientDTO wishClientDTO)
         {
-            //var client = new Client(productDTO.Title);
-            //var product = new Product(productDTO.Picture);
+          
+            var client = new Client(wishClientDTO.IdClient);
+            var product = new Product(new Title(wishClientDTO.Title));
 
-            //var product = Product.ProductBuilder(title, picture, productDTO.Price, productDTO.Brand);
-            //if (product.Errors.Count >0)
-            //    return BadRequest(product.Errors.Select(c=>c.ErrorMessage));
+            var wishClient = WishClient.WishClientBuilder(client, product);
+            if (wishClient.Errors.Count > 0)
+                return BadRequest(wishClient.Errors.Select(c => c.ErrorMessage));
 
-            //_wishClientService.Add(product);
+            _wishClientService.Add(wishClient);
 
-            //if (_wishClientService.GetErrors().Count > 0)
-            //    return BadRequest(_wishClientService.GetErrors());
+            if (_wishClientService.GetErrors().Count > 0)
+                return BadRequest(_wishClientService.GetErrors());
 
             return Ok();
         }

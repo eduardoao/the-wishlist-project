@@ -34,10 +34,12 @@ namespace Wishlist.Core.Models
         {
             var wishClient = new WishClient(client,  product);
             
-            wishClient.IsValid();
+            //wishClient.IsValid();
 
             return wishClient;
         }
+
+
 
         public override bool IsValid()
         {

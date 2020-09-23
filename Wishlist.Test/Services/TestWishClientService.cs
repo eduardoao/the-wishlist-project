@@ -17,12 +17,14 @@ namespace Wishlist.Test.Services
         private ServiceWishClient serviceWishClient;
         private Mock<IRepositoryWishClient> repositoryWhisClient;
         private Mock<IRepositoryProduct> repositoryProduct;
+        private Mock<IRepositoryClient> repositoryClient;
 
         public TestWishClientService()
         {
             repositoryWhisClient = new Mock<IRepositoryWishClient>();
             repositoryProduct = new Mock<IRepositoryProduct>();
-            serviceWishClient = new ServiceWishClient(repositoryWhisClient.Object, repositoryProduct.Object);
+            repositoryClient = new Mock<IRepositoryClient>();
+            serviceWishClient = new ServiceWishClient(repositoryWhisClient.Object, repositoryProduct.Object, repositoryClient.Object);
         }
 
         [TestMethod]

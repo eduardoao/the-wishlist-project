@@ -36,6 +36,7 @@ namespace Wishlist.Api
 
             services.AddTransient<IClientService, ServiceClient>();
             services.AddTransient<IProductService, ServiceProduct>();
+            services.AddTransient<IWishClientService, ServiceWishClient>();
 
             // Configurando o serviço de documentação do Swagger
             services.AddSwaggerGen(c =>
